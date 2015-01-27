@@ -2,7 +2,7 @@ function tinypng() {
 	for i in *.{png,jpg}
 	do
 		if [ "$i" != "*.jpg" ] && [ "$i" != "*.png" ]; then
-			JSON=`curl -i --user api:nxg-x8nXukSRQst4rXpLJZVnLktdK17u --data-binary @"$i" https://api.tinypng.com/shrink`
+			JSON=`curl -i --user api:apikey --data-binary @"$i" https://api.tinypng.com/shrink`
 				URL=`echo $JSON | grep -o 'http[s]*:[^"]*'`
 				curl $URL>"$i" 2>/dev/null
 				echo "${i} updated.";
